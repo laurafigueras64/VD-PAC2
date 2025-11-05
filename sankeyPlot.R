@@ -4,6 +4,8 @@ library(dplyr)
 library(stringr)
 library(tidyr)
 library(networkD3)
+library(htmlwidgets)
+library(htmltools)
 
 # Parameters
 n_top <- 5
@@ -136,14 +138,22 @@ links <- edges_uni %>%
   )
 
 # ---- Plot Sankey ----
-sankeyNetwork(
-  Links   = links,
-  Nodes   = nodes,
-  Source  = "source",
-  Target  = "target",
-  Value   = "value",
-  NodeID  = "name",
-  fontSize = 12,
-  nodeWidth = 20,
-  sinksRight = TRUE
+sankey <- sankeyNetwork(
+    Links   = links,
+    Nodes   = nodes,
+    Source  = "source",
+    Target  = "target",
+    Value   = "value",
+    NodeID  = "name",
+    fontSize = 12,
+    nodeWidth = 20,
+    sinksRight = TRUE
+  )
+
+# ---- Save the plot as an HTML file ----
+saveWidget(
+  widget = sankey,
+  file = "sankey_flight_routes.html",
+  selfcontained = TRUE,
+  title = "European Flight Routes"
 )
