@@ -1,0 +1,15 @@
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+.Rproj.user
+*.Rproj
+*.csv
+*.xlsx
+*.ods
+*.pdf
+*.png
+*.svg
+output/
+data-raw/
+
